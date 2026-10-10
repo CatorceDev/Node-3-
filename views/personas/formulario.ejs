@@ -1,0 +1,22 @@
+<h1>
+    <%= persona ? 'Editar' : 'Nueva' %> Persona
+</h1>
+<% if (typeof error !=='undefined' && error) { %>
+    <div class="alert">
+        <%= error %>
+    </div>
+    <% } %>
+        <form action="<%= action %>" method="<%= method %>">
+            <label>Nombre:</label>
+            <input type="text" name="nombre" value="<%= persona ? persona.nombre : '' %>" required>
+
+            <label>Apellido:</label>
+            <input type="text" name="apellido" value="<%= persona ? persona.apellido : '' %>" required>
+            <label>Email:</label>
+            <input type="email" name="email" value="<%= persona ? persona.email : '' %>" required>
+            <label>Edad:</label>
+            <input type="text" name="edad" value="<%= persona ? persona.edad : '' %>" required>
+            <button class="btn btn-primary" type="submit">Guardar</button>
+            <a class="btn" href="/personas">Cancelar</a>
+        </form>
+        <%- include('../plantillas/footer') %>

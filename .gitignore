@@ -1,0 +1,24 @@
+# Dependencias instaladas; se reconstruyen con npm ci
+node_modules/
+
+# Secretos y configuración local
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Archivos del sistema y del editor
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Salida generada y cobertura
+coverage/
+dist/
+build/

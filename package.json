@@ -1,0 +1,32 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "Proyecto base nodejs",
+  "types": "module",
+  "main": "index.js",
+  "keywords": [
+    "express",
+    "mariadb",
+    "sequlize"
+  ],
+  "license": "ISC",
+  "author": "CatorceDev",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon ./views/index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "body-parse": "^0.1.0",
+    "dotenv": "^18.0.5",
+    "ejs": "^7.0.1",
+    "express": "^5.2.1",
+    "mariadb": "^3.5.4",
+    "method-override": "^3.0.0",
+    "sequelize": "^6.37.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
