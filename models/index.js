@@ -1,6 +1,6 @@
 import Persona from "../models/Persona.js"
-import Libro from "../models/libros.js"
-import Venta from "../models/venta.js"
+import Libro from "../models/Libro.js"
+import Venta from "../models/Venta.js"
 // Asociaciones
 Persona.hasMany(Venta, { foreignKey: 'personaId', as: 'venta' });
 Venta.belongsTo(Persona, { foreignKey: 'personaId', as: 'persona' });

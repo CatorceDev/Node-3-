@@ -1,102 +1,42 @@
-<!DOCTYPE html>
-<html lang="es">
+<%- include('../plantillas/header') %>
+    <h1>Lista de Personas</h1>
+    <a class="btn btn-primary" href="/personas/crear">Nueva Persona</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Ventas</th>
+                <th>Acciones</th>
+            </tr>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Registro de Personas</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 700px;
-            margin: 40px auto;
-        }
-
-        input {
-            display: block;
-            margin: 8px 0;
-            padding: 8px;
-            width: 100%;
-        }
-
-        button {
-            padding: 10px 20px;
-            background: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th,
-        td {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: left;
-        }
-
-        .ok {
-            color: green;
-        }
-
-        .err {
-            color: red;
-        }
-    </style>
-</head>
-
-<body>
-    <h1>Registrar Persona</h1>
-    <% if (mensaje) { %>
-        <p class="ok">
-            <%= mensaje %>
-        </p>
-        <% } %>
-            <% if (error) { %>
-                <p class="err">
-                    <%= error %>
-                </p>
-                <% } %>
-                    <form action="/registro" method="POST">
-                        <input type="text" name="nombre" placeholder="Nombre" required>
-                        <input type="text" name="apellido" placeholder="Apellido" required>
-                        <input type="email" name="email" placeholder="Email" required>
-                        <input type="number" name="edad" placeholder="Edad" required min="0" max="120">
-                        <button type="submit">Guardar</button>
-                    </form>
-                    <h2>Personas registradas</h2>
-                    <table>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Email</th>
-                            <th>Edad</th>
-                        </tr>
-                        <% personas.forEach(p=> { %>
-                            <tr>
-                                <td>
-                                    <%= p.id %>
-                                </td>
-                                <td>
-                                    <%= p.nombre %>
-                                </td>
-                                <td>
-                                    <%= p.apellido %>
-                                </td>
-                                <td>
-                                    <%= p.email %>
-                                </td>
-                                <td>
-                                    <%= p.edad %>
-                                </td>
-                            </tr>
-                            <% }) %>
-                    </table>
-</body>
-
-</html>
+        </thead>
+        <tbody>
+            <% if (persona !==null){ persona.forEach(p=> {
+                %>
+                <tr>
+                    <td>
+                        <%= p.id %>
+                    </td>
+                    <td>
+                        <%= p.nombre %>
+                    </td>
+                    <td>
+                        <%= p.email %>
+                    </td>
+                    <td>
+                        <%= p.venta.length %>
+                    </td>
+                    <td>
+                        <a class="btn btn-edit" href="/personas/<%= p.id %>/editar">Editar</a>
+                        <form action="/personas/<%= p.id %>?_method=DELETE" method="POST" style="display:inline"
+                            onsubmit="return confirm('¿Eliminar esta persona?')">
+                            <button class="btn btn-delete" type="submit">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                <% })} %>
+        </tbody>
+    </table>
+    <%- include('../plantillas/footer') %>

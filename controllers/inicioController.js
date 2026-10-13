@@ -1,7 +1,6 @@
 import express from "express";
 import bcrypt from "bcryptjs";
 import { Persona, Libro, Venta } from "../models/index.js"
-
 const inicio = async (req, res) => {
     const persona = await Persona.findAll({
         order: [['id', 'DESC']],
@@ -14,7 +13,7 @@ const verCrear = async (req, res) => {
         order: [['id', 'DESC']],
         include: [{ model: Venta, as: 'venta' }]
     });
-    res.render("./personas/formulario.ejs", { persona, action: 'personas/registrar', method: 'POST' })
+    res.render("./personas/formulario.ejs", { persona, action: '/personas/registrar', method: 'POST' })
 };
 // Guardar persona
 const registro = async (req, res) => {
@@ -33,7 +32,7 @@ const registro = async (req, res) => {
         });
         res.render('./personas/index.ejs', {
             persona,
-            action: '/personas/registrar',
+            action: '/registrar',
             method: 'POST',
             mensaje: null,
             error: err.message
@@ -49,9 +48,9 @@ const editar = async (req, res) => {
         action: `/personas/${persona.id}?_method=PUT`,
         method: 'POST',
     });
-
 };
 // ACTUALIZAR
+
 const actualizar = async (req, res) => {
     try {
         const persona = await Persona.findByPk(req.params.id);

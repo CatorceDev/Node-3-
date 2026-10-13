@@ -1,3 +1,4 @@
+<%- include('../plantillas/header') %>
 <h1>
     <%= persona ? 'Editar' : 'Nueva' %> Persona
 </h1>
@@ -9,7 +10,6 @@
         <form action="<%= action %>" method="<%= method %>">
             <label>Nombre:</label>
             <input type="text" name="nombre" value="<%= persona ? persona.nombre : '' %>" required>
-
             <label>Apellido:</label>
             <input type="text" name="apellido" value="<%= persona ? persona.apellido : '' %>" required>
             <label>Email:</label>

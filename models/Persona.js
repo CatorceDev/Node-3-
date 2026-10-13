@@ -1,7 +1,9 @@
-import Sequelize from "sequelize";
 import { DataTypes } from 'sequelize';
 import db from '../config/db.js';
 const Persona = db.define('Persona', {
+    id: {
+        type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true
+    },
     nombre: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -15,11 +17,11 @@ const Persona = db.define('Persona', {
         allowNull: false,
         unique: true,
         validate: { isEmail: true },
-
     },
     edad: {
         type: DataTypes.INTEGER,
         allowNull: false,
+
         validate: { min: 0, max: 120 },
     }
 }, {

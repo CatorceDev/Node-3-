@@ -32,7 +32,7 @@ const port = 2800;
     try {
         await db.authenticate();
         console.log('Conexión a la base de datos establecida.');
-        await db.sync({ alter: true }); // crea/actualiza tablas
+        await db.sync(); // crea/actualiza tablas
         console.log('Modelos sincronizados.');
         app.listen(port, () => {
 
