@@ -1,0 +1,60 @@
+
+<%- include('../plantillas/header') %>
+
+<h1>Lista de Ventas</h1>
+
+<a class="btn btn-primary" href="/ventas/crear">
+    Nueva Venta
+</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cantidad</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% if (ventas && ventas.length > 0) { %>
+            <% ventas.forEach(venta => { %>
+                <tr>
+                    <td><%= venta.id %></td>
+                    <td><%= venta.cantidad %></td>
+                    <td><%= venta.fecha %></td>
+
+                    <td>
+                        <a
+                            class="btn btn-edit"
+                            href="/ventas/<%= venta.id %>/editar"
+                        >
+                            Editar
+                        </a>
+
+                        <form
+                            action="/ventas/<%= venta.id %>?_method=DELETE"
+                            method="POST"
+                            style="display:inline"
+                            onsubmit="return confirm('¿Eliminar esta venta?')"
+                        >
+                            <button
+                                class="btn btn-delete"
+                                type="submit"
+                            >
+                                Eliminar
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        <% } else { %>
+            <tr>
+                <td colspan="4">No hay ventas registradas.</td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+
+<%- include('../plantillas/footer') %>

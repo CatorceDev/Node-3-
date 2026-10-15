@@ -1,0 +1,18 @@
+<%- include('../plantillas/header') %>
+<h1>
+    <%= ventas ? 'Editar' : 'Nueva' %> Ventas
+</h1>
+<% if (typeof error !=='undefined' && error) { %>
+    <div class="alert">
+        <%= error %>
+    </div>
+    <% } %>
+        <form action="<%= action %>" method="<%= method %>">
+            <label>Cantidad:</label>
+            <input type="number" name="cantidad" value="<%= ventas ? ventas.nombre : '' %>" required>
+            <label>Fecha:</label>
+            <input type="date" name="fecha" value="<%= ventas ? ventas.apellido : '' %>" required>
+            <button class="btn btn-primary" type="submit">Guardar</button>
+            <a class="btn" href="/ventas">Cancelar</a>
+        </form>
+        <%- include('../plantillas/footer') %>

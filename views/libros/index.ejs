@@ -1,0 +1,62 @@
+<%- include('../plantillas/header') %>
+
+<h1>Lista de libros</h1>
+
+<a class="btn btn-primary" href="/libros/crear">
+    Nuevo libro
+</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% if (libros && libros.length > 0) { %>
+            <% libros.forEach(libro => { %>
+                <tr>
+                    <td><%= libro.id %></td>
+                    <td><%= libro.titulo %></td>
+                    <td><%= libro.autor %></td>
+                    <td><%= libro.precio %></td>
+
+                    <td>
+                        <a
+                            class="btn btn-edit"
+                            href="/libros/<%= libro.id %>/editar"
+                        >
+                            Editar
+                        </a>
+
+                        <form
+                            action="/libros/<%= libro.id %>?_method=DELETE"
+                            method="POST"
+                            style="display:inline"
+                            onsubmit="return confirm('¿Eliminar este libro?')"
+                        >
+                            <button
+                                class="btn btn-delete"
+                                type="submit"
+                            >
+                                Eliminar
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        <% } else { %>
+            <tr>
+                <td colspan="5">No hay libros registrados.</td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+
+<%- include('../plantillas/footer') %>
+```

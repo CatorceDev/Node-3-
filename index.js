@@ -1,5 +1,7 @@
 import express from "express";
 import router from "./routes/inicio_router.js";
+import librosRouter from "./routes/libros_router.js"
+import ventasRouter from "./routes/ventas_router.js"
 import db from "./config/db.js";
 import dotenv from 'dotenv';
 import methodOverride from "method-override";
@@ -26,6 +28,8 @@ app.use('/bootstrap', express.static(
 ));
 //routing
 app.use("/personas", router);
+app.use("/libros", librosRouter);
+app.use("/ventas", ventasRouter);
 //definiendo el puerto
 const port = 2800;
 (async () => {

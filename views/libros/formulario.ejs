@@ -1,0 +1,20 @@
+<%- include('../plantillas/header') %>
+<h1>
+    <%= libros ? 'Editar libro' : 'Nuevo libro' %> Libros
+</h1>
+<% if (typeof error !=='undefined' && error) { %>
+    <div class="alert">
+        <%= error %>
+    </div>
+    <% } %>
+        <form action="<%= action %>" method="<%= method %>">
+            <label>Titulo:</label>
+            <input type="text" name="titulo" value="<%= libros ? libros.titulo : '' %>" required>
+            <label>Autor:</label>
+            <input type="text" name="autor" value="<%= libros ? libros.autor : '' %>" required>
+            <label>Precio:</label>
+            <input type="number" name="precio" value="<%= libros ? libros.precio : '' %>" required>
+            <button class="btn btn-primary" type="submit">Guardar</button>
+            <a class="btn" href="/libros">Cancelar</a>
+        </form>
+        <%- include('../plantillas/footer') %>
